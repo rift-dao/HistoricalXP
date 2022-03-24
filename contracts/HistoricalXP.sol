@@ -18,7 +18,7 @@ interface IRiftData {
 
 contract HistoricalXP is Ownable {
     bytes32 public root;
-    mapping(uint256 => uint256) private claimedXP;
+    mapping(uint256 => uint256) public claimedXP;
     IRiftData iriftData;
 
     constructor(bytes32 _root, address rd) {
