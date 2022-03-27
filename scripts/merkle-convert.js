@@ -1,7 +1,7 @@
 const { ethers } = require('hardhat');
 const { MerkleTree } = require('merkletreejs');
 const keccak256 = require('keccak256');
-const lootIds = require('./data.json');
+const lootIds = require('../data/hxpS1.json');
 
 function hashLoot(lootId, xp) {
     return Buffer.from(ethers.utils.solidityKeccak256(['uint256', 'uint256'], [lootId, xp]).slice(2), 'hex');

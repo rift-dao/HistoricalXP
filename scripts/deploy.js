@@ -1,7 +1,7 @@
 const { ethers } = require("hardhat");
 const { MerkleTree } = require('merkletreejs');
 const keccak256 = require('keccak256');
-const lootIds = require('./hxpS1.json');
+const lootIds = require('../data/hxpS1.json');
 
 function hashLoot(lootId, xp) {
     return Buffer.from(ethers.utils.solidityKeccak256(['uint256', 'uint256'], [lootId, xp]).slice(2), 'hex');
@@ -21,7 +21,7 @@ async function main() {
     const HXP = await ethers.getContractFactory("HistoricalXP");
     // RIFTDATA 
     // ROPSTEN: 0xA1604ced1D0DBAE35f84Ac4ec1dA64cc222c1570
-    // MAINNET: 
+    // MAINNET: 0x632678bBa8a4DD16255F164e9d74853BeA9856E7
     const hxp = await HXP.deploy(tree.getRoot(), "0xA1604ced1D0DBAE35f84Ac4ec1dA64cc222c1570");
   
     console.log("Token address:", hxp.address);
