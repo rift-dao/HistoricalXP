@@ -33,6 +33,15 @@ contract HistoricalXP is Ownable {
         _awardXP(lootId, xp);
     }
 
+    function claimXPMultiple(uint256[] calldata lootIds, uint256[] calldata xps, bytes32[][] calldata proofs)
+    external
+    {
+        for (uint i=0; i < lootIds.length; i++) {
+            require(_verify(_leaf(lootIds[i], xps[i]), proofs[i]), "Invalid merkle proof");
+            _awardXP(lootIds[i], xps[i]);
+        }
+    }
+
     function _awardXP(uint256 lootId, uint256 xp) 
     internal 
     {
