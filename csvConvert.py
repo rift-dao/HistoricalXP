@@ -10,13 +10,13 @@ def csvToJson(csvFilePath, jsonFilePath):
 
         for rows in csvRead:
             key = rows['lootid']
-            jsonData[key] = rows['mint score']
+            jsonData[key] = rows['xp']
 
     with open(jsonFilePath, 'w', encoding = 'utf-8') as jsonfile:
         jsonfile.write(json.dumps(jsonData, indent=4))
 
-csvFilePath = r'data.csv'
-jsonFilePath = r'data.json'
+csvFilePath = r'riftdataXP032722.csv'
+jsonFilePath = r'riftdataXP032722.json'
 
 start = time.perf_counter()
 csvToJson(csvFilePath, jsonFilePath)
