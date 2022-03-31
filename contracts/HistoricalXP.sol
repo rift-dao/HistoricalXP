@@ -10,13 +10,14 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 interface IRiftData {
     function addXP(uint256 xp, uint256 bagId) external;
 }
 
-contract HistoricalXP is Ownable {
+contract HistoricalXP is Ownable, ReentrancyGuard {
     bytes32 public root;
     mapping(uint256 => uint256) public claimedXP;
     IRiftData iriftData;
@@ -44,6 +45,7 @@ contract HistoricalXP is Ownable {
 
     function _awardXP(uint256 lootId, uint256 xp) 
     internal 
+    nonReentrant
     {
         uint256 xpAward = xp - claimedXP[lootId];
         require(xpAward > 0, "No XP to claim");

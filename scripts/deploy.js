@@ -22,7 +22,7 @@ async function main() {
     // RIFTDATA 
     // ROPSTEN: 0xA1604ced1D0DBAE35f84Ac4ec1dA64cc222c1570
     // MAINNET: 0x632678bBa8a4DD16255F164e9d74853BeA9856E7
-    const hxp = await HXP.deploy(tree.getRoot(), "0xA1604ced1D0DBAE35f84Ac4ec1dA64cc222c1570");
+    const hxp = await HXP.deploy(tree.getRoot(), "0x632678bBa8a4DD16255F164e9d74853BeA9856E7");
   
     console.log("Token address:", hxp.address);
   }

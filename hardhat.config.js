@@ -27,6 +27,10 @@ module.exports = {
     ropsten: {
       url: ALCHEMY_URL_ROP,
       accounts: [`${ROPSTEN_PK}`]
+    },
+    mainnet: {
+      url: process.env.ALCHEMY_URL_MAINNET,
+      accounts: [`${process.env.MAINNET_PK}`]
     }
   },
   etherscan: {
